@@ -40,4 +40,4 @@ jobs:
          image: mj36172/my-app
          registry: docker.io
          username: ${{ secrets.DOCKER_USERNAME }}
-         passwor : ${{ secrets.DOCKER_PASSWORD }}
+         password: ${{ secrets.DOCKER_PASSWORD }}
