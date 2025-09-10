@@ -34,3 +34,10 @@ jobs:
       run: mvn install -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
+    - name: Push and build image
+      uses: mr-smither-excellent/docker-build-push@v4
+      with:
+         image: mj36172/my-app
+         registry: docker.io
+         username: ${{ secrets.DOCKER_USERNAME }}
+         passwor : ${{ secrets.DOCKER_PASSWORD }}
