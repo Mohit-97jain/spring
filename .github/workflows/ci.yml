@@ -39,5 +39,5 @@ jobs:
       with:
          image: mj36172/my-app
          registry: docker.io
-         username: ${{ secrets.DOCKER_USERNAME }}
-         password: ${{ secrets.DOCKER_PASSWORD }}
+         username: mj36172
+         password: dckr_pat_SLK4COTpeNAJHSvxLM535VIbMFY
