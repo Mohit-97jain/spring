@@ -1,13 +1,13 @@
 def buildApp(){
-  echo "building the application
+  echo "building the application..."
 }
 
 def testApp(){
-  echo "building the application
+  echo "testing the application..."
 }
 
 def deployApp(){
-  echo "building the application
+  echo "deploying the application..."
 }
 
 return this
