@@ -3,6 +3,9 @@ pipeline{
     environment {
         DOCKER_IMAGE = "mj36172/pipeline"   
     }
+     tools {
+        maven 'Maven'   
+    }
     stages{
         stage("init"){
             steps{
