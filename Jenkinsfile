@@ -16,21 +16,21 @@ pipeline{
         }
         stage('Build JAR') {
             steps {
-                sh 'mvn clean package -DskipTests'
+                bat 'mvn clean package -DskipTests'
             }
         }
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${DOCKER_IMAGE}:${env.BUILD_NUMBER} ."
+                bat "docker build -t ${DOCKER_IMAGE}:${env.BUILD_NUMBER} ."
             }
         }
 
         stage ('docker push'){
             steps{
                 withDockerRegistry([credentialsId: 'dockerhub-creds', url: 'https://index.docker.io/v1/']) {
-                    sh "docker push ${DOCKER_IMAGE}:${env.BUILD_NUMBER}"
-                    sh "docker tag ${DOCKER_IMAGE}:${env.BUILD_NUMBER} ${DOCKER_IMAGE}:latest"
-                    sh "docker push ${DOCKER_IMAGE}:latest"
+                    bat "docker push ${DOCKER_IMAGE}:${env.BUILD_NUMBER}"
+                    bat "docker tag ${DOCKER_IMAGE}:${env.BUILD_NUMBER} ${DOCKER_IMAGE}:latest"
+                    bat "docker push ${DOCKER_IMAGE}:latest"
             }
         }
 
