@@ -28,14 +28,17 @@ pipeline{
             }
         }
 
-        stage ('docker push'){
-            steps{
-                withDockerRegistry([credentialsId: 'dockerhub-creds', url: 'https://index.docker.io/v1/']) {
-                    bat "docker push ${DOCKER_IMAGE}:${env.BUILD_NUMBER}"
-                    bat "docker tag ${DOCKER_IMAGE}:${env.BUILD_NUMBER} ${DOCKER_IMAGE}:latest"
-                    bat "docker push ${DOCKER_IMAGE}:latest"
+        stage('Push to Docker Hub') {
+    steps {
+        script {
+            docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-creds') {
+                def app = docker.build("${DOCKER_IMAGE}:${env.BUILD_NUMBER}")
+                app.push()
+                app.push("latest")
             }
         }
+    }
+}
 
 
         }
