@@ -9,4 +9,5 @@ def TestApp{
 def deployApp{
   echo "building the application
 }
+
 return this
