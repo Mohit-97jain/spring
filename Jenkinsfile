@@ -1,5 +1,5 @@
 pipeline{
-    agent {label 'jdk17'}
+    agent any
     environment {
         DOCKER_IMAGE = "mj36172/pipeline"   
     }
